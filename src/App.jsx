@@ -5,6 +5,8 @@ import Productpage from './pages/Productpage';
 import Cartpage from './pages/Cartpage';
 import NavBar from './components/Navbar';
 
+
+
 const App = () => {
   return (
     <div>
