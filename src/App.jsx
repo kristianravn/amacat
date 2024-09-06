@@ -5,11 +5,13 @@ import Productpage from './pages/Productpage';
 import Cartpage from './pages/Cartpage';
 import NavBar from './components/Navbar';
 import axios from 'axios'
+// import CartItem from './components/CartItem';
 
 
 
 const App = () => {
   const [cats, setCats] = useState([]);
+  const [cart, setCart] = useState([]);
   
   useEffect(() => {
     
@@ -26,20 +28,20 @@ const App = () => {
     fetchCats();
   }, []);
   return (
-    <div>
+    
       
     <BrowserRouter>
+     <div>
     <NavBar />
-   
-      
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/productpage" element={<Productpage cats={cats}/>} />
-        <Route path="/cart" element={<Cartpage/>} />
+        <Route path="/productpage" element={<Productpage cart={cart} setCart={setCart} cats={cats}/>} />
+        <Route path="/cart" element={<Cartpage setCart={setCart} cart={cart}/>} />
+     
       </Routes>
-    
+      </div>
     </BrowserRouter>
-    </div>
+    
   );
 };
 

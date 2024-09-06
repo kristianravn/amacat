@@ -11,13 +11,13 @@ const NavBar = () => {
       <ul className="navbar-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/Productpage">Products</Link></li>
-        <li><Link to="/cartpage">Cart</Link></li>
+        <li><Link to="/cart">Cart</Link></li>
         <li className="dropdown">
           <span className="dropdown-title">Menu</span>
           <ul className="dropdown-menu">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/Productpage">Products</Link></li>
-            <li><Link to="/Cartpage">Cart</Link></li>
+            <li><Link to="/cart">Cart</Link></li>
           </ul>
         </li>
       </ul>
