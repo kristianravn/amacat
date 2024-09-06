@@ -7,6 +7,8 @@ import NavBar from './components/Navbar';
 import axios from 'axios'
 // import CartItem from './components/CartItem';
 
+
+
 const App = () => {
   const [cats, setCats] = useState([]);
   const [cart, setCart] = useState([]);
