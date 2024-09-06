@@ -6,6 +6,8 @@ import Cartpage from './pages/Cartpage';
 import NavBar from './components/Navbar';
 import axios from 'axios'
 
+
+
 const App = () => {
   const [cats, setCats] = useState([]);
   
