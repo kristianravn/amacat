@@ -2,9 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { CatList, CatItem, CatImage } from '../styledComponent';
 
-const ProductList = ({cats}) => {
+const ProductList = ({cart, setCart,cats}) => {
 
-console.log("cats on productlist: ", cats)
+  const addToCart = (e,product,cart) => {
+    e.preventDefault() 
+    console.log("add to cart",product) 
+    setCart([...cart, product]);
+  };
   return (
     <div>
       <h1>Available Cats</h1>
@@ -14,7 +18,7 @@ console.log("cats on productlist: ", cats)
             <CatImage src={cat.url} alt="Cat" />
             <p>Cat Name: {cat.id}</p>
             <p>Price: $100</p>
-            <button>Add to Cart</button>
+            <button onClick={(e) => addToCart(e,cat,cart)}>Add to Cart</button>
           </CatItem>
         )) : <p>LOADING...</p>}
       </CatList>

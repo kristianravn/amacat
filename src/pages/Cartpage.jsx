@@ -1,54 +1,48 @@
-import React, { useState }from 'react'
+import React, { useState } from 'react';
+import ProductList from '../components/Productlist'; 
+import Cartitem from '../components/CartItem';
 
 
-// cart section that list the items that are to be paid for
+const CartPage = ({cart}) => {
+  
 
-  const Cartpage = () => {
-console.log ("!!!!!")
-     const [fakeCart, setFakeCart] = useState ([
-      {id: 1, name: "item 1", price: 100.0, image: ""},
-      {id: 1, name: "item 2", price: 100.0, image: ""},
-      {id: 1, name: "item 3", price: 100.0, image: ""},
+ 
 
-     ]);
+  // Function to calculate total cost
+  const getTotalCost = () => {
+    return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+  };
 
-    //  Function to calculate total cost
+  // Function to delete an item from the cart
+  const deleteItem = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
 
-    const getTotalCost = () => {
-      return fakeCart.reduce((total, item) => total + item.price, 0) .toFixed(2);
-    };
-const totalCost = getTotalCost()
-    // function to delete an item from cart
+  const totalCost = getTotalCost(); // Total cost calculation
+console.log("cart in cartpage",cart)
+  return (
+    <div>
+      {/* Navbar */}
+      <nav>
+        <h2>Cart Page</h2>
+        <p>Total in Cart: {cart.length}</p>
+        <p>Total Cost: £{totalCost}</p>
+      </nav>
 
-    const deleteItem = (id) => {
-      setFakeCart(fakeCart.filter((item) => item.id !== id));
-    };
+     
 
-    return (
+      {/* Cart Items Display */}
       <div>
-        {/* Navbar */}
-        
-        <nav>
-          <h2>Cart page</h2>
-          <p>Total in Cart: {fakeCart.length}</p>
-          <p>Total Cost: £{totalCost}</p>
-        </nav>
-
-        {/* Cart Items */}
-
-        <div>
-        {fakeCart.map((item) => (
+        {cart ? cart.map((item) => (
           <div key={item.id} style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
             <img src={item.image} alt={item.name} style={{ width: "100px", marginRight: "20px" }} />
             <p>{item.name} - £{item.price}</p>
             <button onClick={() => deleteItem(item.id)} style={{ marginLeft: "20px" }}>Delete</button>
           </div>
-        ))}
+        )) : <p>cart is empty </p>}
       </div>
     </div>
   );
 };
 
-
-
-export default Cartpage;
+export default CartPage;
